@@ -22,6 +22,7 @@ from PIL     import Image
 from skimage import morphology
 from timeit  import default_timer as timer
 #%%
+mpl.rc('image', cmap='gray')
 
 TestDir = 'F:\\01_AEMGdocs\\AE_docs\\2019_UniPG\\MieScattering\\Bosch 8514448 AI 04' 
 os.chdir(TestDir)
@@ -36,7 +37,12 @@ for i in range(0,len(Idx)):
     BgIdx = [i for i, s in enumerate(BgCont) if '.tif' in s]
     
     for j in range(0,len(BgIdx)):
-        plt.imread(BgCont[BgIdx[j]])
+        if j == 0:
+            ABg = np.double(plt.imread(BgCont[BgIdx[j]]))
+        else:
+            ABg += np.double(plt.imread(BgCont[BgIdx[j]]))
+            
+    ABg = ABg/len(BgIdx)
         
     
     
