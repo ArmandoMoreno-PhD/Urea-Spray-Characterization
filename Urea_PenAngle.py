@@ -35,8 +35,9 @@ for i in range(0,len(Idx)):
     BgCont = os.listdir()
     BgIdx = [i for i, s in enumerate(BgCont) if '.tif' in s]
     
-    for j in range(0,len(BgIdx))
+    for j in range(0,len(BgIdx)):
         plt.imread(BgCont[BgIdx[j]])
+        
     
     
     
